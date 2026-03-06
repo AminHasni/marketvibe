@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  
+  --color-brand: #10b981;
+  --color-brand-dark: #059669;
+}
+
+@layer base {
+  body {
+    @apply bg-zinc-50 text-zinc-900 font-sans transition-colors duration-500;
+  }
+  
+  :where(.dark) body {
+    @apply bg-zinc-950 text-zinc-50;
+  }
+
+  :where(.brutalist) body {
+    @apply bg-white text-black font-mono;
+  }
+
+  /* Smooth transitions for all elements when theme changes */
+  * {
+    @apply transition-colors duration-300;
+  }
+}
+
+.brutalist * {
+  @apply !border-black !rounded-none !shadow-none !transition-none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  background-color: white !important;
+  color: black !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.brutalist .bg-black, .brutalist .bg-zinc-900, .brutalist .bg-brand {
+  @apply !bg-black !text-white;
+}
+
+.brutalist thead, .brutalist th {
+  @apply !bg-black !text-white !border-black;
+}
+
+.brutalist tr {
+  @apply !border-b-2 !border-black;
+}
+
+.brutalist button:hover {
+  @apply !bg-black !text-white;
+}
+
+.brutalist button:hover * {
+  @apply !text-white;
+}
+
+.brutalist .glass {
+  @apply bg-white border-2 border-black backdrop-blur-none;
+}
+
+.brutalist button, .brutalist input, .brutalist select {
+  @apply !border-2 !border-black !bg-white !text-black !rounded-none hover:!bg-black hover:!text-white !transition-none;
+}
+
+.brutalist .bg-brand, .brutalist .text-brand {
+  @apply !bg-black !text-white !border-black;
+}
+
+.brutalist .dark-glow {
+  @apply !shadow-none !border-2 !border-black;
+}
+
+.brutalist img {
+  @apply !grayscale !contrast-125;
+}
+
+.glass {
+  @apply bg-white/70 backdrop-blur-xl border border-white/20;
+}
+
+.dark .glass {
+  @apply bg-zinc-900/60 border-zinc-800/50 backdrop-blur-2xl;
+}
+
+.dark-glow {
+  @apply shadow-[0_0_20px_rgba(16,185,129,0.05)];
+}
+
+.dark .dark-glow {
+  @apply shadow-[0_0_30px_rgba(16,185,129,0.15)];
+}
+
+/* Custom scrollbar for dark mode */
+.dark ::-webkit-scrollbar {
+  width: 10px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  @apply bg-zinc-950;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-zinc-800 rounded-full border-2 border-zinc-950 hover:bg-zinc-700 transition-colors;
+}
+
